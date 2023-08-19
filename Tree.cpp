@@ -6,9 +6,9 @@ typedef struct TreeNode{
 	char data;
 	TreeNode * lc;
 	TreeNode * rc;
-}TreeNode;				//¶¨ÒåÊı½á¹¹Ìå 
+}TreeNode;				//å®šä¹‰æ•°ç»“æ„ä½“ 
 
-void CreateTreeNode(TreeNode *&t){		//ÏÈĞò´´½¨¶ş²æÊ÷ 
+void CreateTreeNode(TreeNode *&t){		//å…ˆåºåˆ›å»ºäºŒå‰æ ‘ 
 	char c;
 	cin>>c;
 	if(c == '.')
@@ -23,7 +23,7 @@ void CreateTreeNode(TreeNode *&t){		//ÏÈĞò´´½¨¶ş²æÊ÷
 			
 }
 
-int countLeaf(TreeNode * t){		//¼ÆËãÒ¶×ÓÊı 
+int countLeaf(TreeNode * t){		//è®¡ç®—å¶å­æ•° 
 	if(t==NULL)
 		return 0;
 	int n = countLeaf(t->lc);
@@ -34,7 +34,7 @@ int countLeaf(TreeNode * t){		//¼ÆËãÒ¶×ÓÊı
 	
 }
 
-int countD(TreeNode *t){		//¼ÆËã¶ÈÎª2µÄ½ÚµãÊı 
+int countD(TreeNode *t){		//è®¡ç®—åº¦ä¸º2çš„èŠ‚ç‚¹æ•° 
 	if(t==NULL)
 		return 0;
 	if(t->lc&&t->rc)
@@ -47,7 +47,7 @@ int countD(TreeNode *t){		//¼ÆËã¶ÈÎª2µÄ½ÚµãÊı
 	
 }
 
-void middle(TreeNode*t){		//ÖĞĞò±éÀú¶ş²æÊ÷ 
+void middle(TreeNode*t){		//ä¸­åºéå†äºŒå‰æ ‘ 
 	if(!t){
 		cout<<"BitTree is empty."<<endl;
 	}
@@ -55,11 +55,11 @@ void middle(TreeNode*t){		//ÖĞĞò±éÀú¶ş²æÊ÷
 
 	TreeNode * p = t;
 	while(p||!st.empty()){
-		if(p){				//½Úµã·Ç¿Õ,ÈëÕ»£¬·ÃÎÊ×ó×ÓÊ÷ 
+		if(p){				//èŠ‚ç‚¹éç©º,å…¥æ ˆï¼Œè®¿é—®å·¦å­æ ‘ 
 			st.push(p);
 			p = p->lc;
 		}
-		else{				//×ó×ÓÊ÷¿Õ£¬½Úµã³öÕ»£¬ÍË»Ø½Úµã£¬·ÃÎÊÓÒ×ÓÊ÷ 
+		else{				//å·¦å­æ ‘ç©ºï¼ŒèŠ‚ç‚¹å‡ºæ ˆï¼Œé€€å›èŠ‚ç‚¹ï¼Œè®¿é—®å³å­æ ‘ 
 			p = st.top();
 			st.pop();
 			cout<<p->data<<' ';
@@ -73,14 +73,14 @@ void InTraverse(TreeNode *t){
     TreeNode *p=t;
     stack<TreeNode*>s;
     while(p||!s.empty())
-       if(p){  //¸ùÖ¸ÕëÈëÕ»£¬±éÀú×ó×ÓÊ÷
+       if(p){  //æ ¹æŒ‡é’ˆå…¥æ ˆï¼Œéå†å·¦å­æ ‘
            s.push(p);
            p=p->lc;
        }
-       else{ //¸ùÖ¸ÕëÍËÕ»£¬·ÃÎÊ½áµã£¬±éÀúÓÒ×ÓÊ÷
+       else{ //æ ¹æŒ‡é’ˆé€€æ ˆï¼Œè®¿é—®ç»“ç‚¹ï¼Œéå†å³å­æ ‘
            p=s.top();
 		   s.pop();
-           cout<<p->data;   //·ÃÎÊ½áµã
+           cout<<p->data;   //è®¿é—®ç»“ç‚¹
            p=p->rc;
        }
 }
@@ -91,6 +91,7 @@ int main(){
 	middle(root);
 	cout<<countLeaf(root)<<endl;
 	cout<<countD(root)<<endl;
+	//test
 	return 0;
 }
 
